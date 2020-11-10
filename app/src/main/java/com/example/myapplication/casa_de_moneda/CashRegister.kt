@@ -2,46 +2,53 @@ package com.example.myapplication.casa_de_moneda
 
 import kotlin.collections.HashMap
 
-class Caja(
-    var dolaresEnCaja: Double,
-    var pesosEnCaja: Double,
-    var eurosEnCaja: Double,
-    var librasEnCaja: Double,
-    var dolarescanadiensesEnCaja: Double,
-    var dineroIngresado: Double
+/**var dolaresEnCaja: Double,
+var pesosEnCaja: Double,
+var eurosEnCaja: Double,
+var dolarescanadiensesEnCaja: Double,*/
+
+/**
+ *
+ */
+class CashRegister(
+    private var dineroEnCaja: HashMap<Currency, Double> = hashMapOf()
+
 ) {
 
-    val map: HashMap<Currency, Double> = HashMap()
-
+    lateinit var dineroIngresado: Money
+/*
     /**
      *
      */
-    fun recibirDinero(dinero: Double, requiredCurrency: Currency) {
+    fun recibirDinero(money: Money, requiredCurrency: Currency) {
+        // TODO: Validar que sea del mismo currency.
+        // TODO: Hacer la suma del dinero actual con el recibido
+        dineroIngresado = money
+
+        dineroEnCaja.getOrDefault(Currency.USD, 0.0)
 
         val dineroEnCajaFeo = when (requiredCurrency) {
             Currency.USD -> dolaresEnCaja
             Currency.MXN -> pesosEnCaja
-            Currency.YEN -> TODO()
             Currency.CAN -> dolarescanadiensesEnCaja
-            Currency.LIB -> librasEnCaja
+            Currency.EUR -> eurosEnCaja
+
         }
 
+        /**
+         *
+         */
 
-        val dineroEnCajaPorDivisa = map[requiredCurrency]
-        
-        dolaresEnCaja += dinero
-        pesosEnCaja += dinero
-        eurosEnCaja += dinero
-        librasEnCaja += dinero
-        dolarescanadiensesEnCaja += dinero
-        dineroIngresado = dinero
+        fun dineroEnCajaPorDivisa() {
+
+        }
     }
 
     /**
      *
      */
     fun haySuficienteDineroDeLaDivisa(dinero: Double): Boolean {
-         return dineroIngresado <= dinero
+        return dineroIngresado <= dinero
 
     }
 
@@ -52,7 +59,6 @@ class Caja(
         dolaresEnCaja -= dinero
         pesosEnCaja -= dinero
         eurosEnCaja -= dinero
-        librasEnCaja -= dinero
         dolarescanadiensesEnCaja -= dinero
         dineroIngresado -= dinero
     }
@@ -62,5 +68,5 @@ class Caja(
      */
     fun conversionDeUnaDivisaPorOtra(dinero: Double) {
         TODO()
-    }
+    }*/
 }
