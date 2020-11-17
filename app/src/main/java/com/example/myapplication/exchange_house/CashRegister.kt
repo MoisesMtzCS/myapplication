@@ -1,5 +1,6 @@
 package com.example.myapplication.casa_de_moneda
 
+import com.example.myapplication.maquina_de_refrescos.Refresco
 import kotlin.collections.HashMap
 
 /**var dolaresEnCaja: Double,
@@ -16,16 +17,31 @@ class CashRegister(
 ) {
 
     lateinit var dineroIngresado: Money
-/*
+
     /**
      *
      */
     fun recibirDinero(money: Money, requiredCurrency: Currency) {
         // TODO: Validar que sea del mismo currency.
-        // TODO: Hacer la suma del dinero actual con el recibido
-        dineroIngresado = money
+        if (dineroIngresado.currency == requiredCurrency){
 
-        dineroEnCaja.getOrDefault(Currency.USD, 0.0)
+        }
+
+        // TODO: Hacer la suma del dinero actual con el recibido
+            dineroIngresado = money
+    }
+
+    /**
+     *
+     */
+
+    fun sameCurrency(currency: Currency): Boolean {
+        val isTheSameCurrency: Boolean = dineroIngresado.currency == currency
+        return isTheSameCurrency
+    }
+
+
+    /*   dineroEnCaja.getOrDefault(Currency.USD, 0.0)
 
         val dineroEnCajaFeo = when (requiredCurrency) {
             Currency.USD -> dolaresEnCaja
